@@ -35,36 +35,34 @@ public class BonusServiceTest {
     }
 
     @org.junit.jupiter.api.Test
-    void shouldCalculateForRegisteredAndZeroLimit() {
+    void shouldCalculateUnRegisteredAndOverLimit() {
         BonusService service = new BonusService();
 
-        // подготавливаем данные:
-        long amount = 0;
+        //подготавливаем данные:
+        long amount = 100_000_60;
         boolean registered = false;
-        long expected = 0;
+        long expected = 500;
 
-        // вызываем целевой метод:
+        //вызываем целевой метод:
         long actual = service.calculate(amount, registered);
 
-        // производим проверку (сравниваем ожидаемый и фактический):
+        //производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
-
     }
 
     @org.junit.jupiter.api.Test
-    void shouldCalculateForUnregisteredAndUnderLimit() {
+    void shouldCalculateUnRegisteredAndUnderLimit() {
         BonusService service = new BonusService();
 
-        // подготавливаем данные:
+        //подготавливаем данные:
         long amount = 1000_60;
         boolean registered = false;
         long expected = 10;
 
-        // вызываем целевой метод:
+        //вызываем целевой метод:
         long actual = service.calculate(amount, registered);
 
-        // производим проверку (сравниваем ожидаемый и фактический):
+        //производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
-
     }
 }
